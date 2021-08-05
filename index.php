@@ -1,10 +1,60 @@
 <?php
-require_once('connection.php');
+require_once('koneksi.php');
 
-if (isset($_GET['page']) && isset($_GET['act'])) {
-    session_start();
-    $page = $_GET['page']; 
-    $act = $_GET['act']; 
-    } else{
+//Routing dari URL ke Obyek Class PHP
+if (isset($_GET['page']) && isset($_GET['aksi'])) {
+    $page = $_GET['page']; // Berisi nama page
+    $aksi = $_GET['aksi']; // Aksi Dari setiap page
+
+    // require_once akan Dirubah Saat Modul 2
+    if ($page == "auth") {
+        if ($aksi == 'view') {
+            require_once("View/auth/index.php");
+        } else if ($aksi == 'loginAslab') {
+            require_once("View/auth/login_aslab.php");
+        } else if ($aksi == 'loginPraktikan') {
+            require_once("View/auth/login_praktikan.php");
+        } else if ($aksi == 'authAslab') {
+            require_once("View/menu/menu_aslab.php");
+            require_once("View/aslab/index.php");
+        } else if ($aksi == 'authPraktikan') {
+            require_once("View/menu/menu_praktikan.php");
+            require_once("View/praktikan/index.php");
+        } else if ($aksi == 'logout') {
+            require_once("View/auth/index.php");
+        } else if ($aksi == 'daftarPraktikan') {
+            require_once("View/auth/daftar_praktikan.php");
+        } else if ($aksi == 'storePraktikan') {
+            require_once("View/auth/index.php");
+        } else {
+            echo "Method Not Found";
+        }
+    } else if ($page == 'Admin') {
+        require_once("View/menu/menu_aslab.php");
+        if ($aksi == 'view') {
+            require_once("View/daftarprak/index.php");
+        } else if ($aksi == 'verif') {
+            require_once("View/daftarprak/index.php");
+        } else if ($aksi == 'unVerif') {
+            require_once("View/daftarprak/index.php");
+        } else {
+            echo "Method Not Found";
+        }
+    } else {
+        echo "Page Not Found";
+    }
+    } else if ($page == 'User') {
+        require_once("View/menu/menu_aslab.php");
+        if ($aksi == 'view') {
+            require_once("View/daftarprak/index.php");
+        } else if ($aksi == 'verif') {
+            require_once("View/daftarprak/index.php");
+        } else if ($aksi == 'unVerif') {
+            require_once("View/daftarprak/index.php");
+        } else {
+            echo "Method Not Found";
+        }
+}  
+    else{
     require_once('View/auth/Login.php');
     }

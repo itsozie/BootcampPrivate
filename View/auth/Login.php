@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/app.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-    <title>Register Form</title>
+    <title>Login</title>
 </head>
 <body>
 <div class="container">
