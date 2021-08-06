@@ -1,12 +1,12 @@
 <?php
-require_once('koneksi.php');
+require_once("koneksi.php");
+require_once("Model/authModel.php");
 
-//Routing dari URL ke Obyek Class PHP
 if (isset($_GET['page']) && isset($_GET['aksi'])) {
-    $page = $_GET['page']; // Berisi nama page
-    $aksi = $_GET['aksi']; // Aksi Dari setiap page
+    $page = $_GET['page']; //  nama page
+    $aksi = $_GET['aksi']; // Aksi  page
 
-    // require_once akan Dirubah Saat Modul 2
+
     if ($page == "auth") {
         if ($aksi == 'view') {
             require_once("View/auth/login.php");
