@@ -1,16 +1,16 @@
 <?php
 
-function conn(){
-
-    $host = "localhost";
-    $name = "ivenapp";
-    $user = "root";
-    $password = "";
+function koneksi(){
+    $db_host = "localhost";
+    $db_user = "root";
+    $db_password = "";
+    $db_database = "ivenapp";
 
     try {
-        return new mysqli($host,$user,$password,$name);
+        return new mysqli($db_host,$db_user,$db_password,$db_database);
     } catch (Exception $e) {
-        require_once('View/main/error.php');
+        echo "terjadi kesalahan database";
     }
 
 }
+

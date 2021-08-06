@@ -9,7 +9,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
     // require_once akan Dirubah Saat Modul 2
     if ($page == "auth") {
         if ($aksi == 'view') {
-            require_once("View/auth/index.php");
+            require_once("View/auth/login.php");
         } else if ($aksi == 'loginAslab') {
             require_once("View/auth/login_aslab.php");
         } else if ($aksi == 'loginPraktikan') {
