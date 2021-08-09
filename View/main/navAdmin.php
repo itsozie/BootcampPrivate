@@ -17,8 +17,7 @@
     Selamat datang Admin
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Profil</a>
-    <a class="dropdown-item" href="#">Logout</a>
+    <a class="dropdown-item" href="index.php?page=auth&aksi=view">Logout</a>
   </div>
 </div>
   </form>

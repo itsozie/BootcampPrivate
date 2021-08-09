@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2021 at 04:02 PM
+-- Generation Time: Aug 09, 2021 at 07:55 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.21
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `ivenapp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `email` varchar(25) NOT NULL,
+  `password` varchar(25) NOT NULL,
+  `nama` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `email`, `password`, `nama`) VALUES
+(1, 'ivenapp@gmail.com', 'ivonapp', 'Admin App');
 
 -- --------------------------------------------------------
 
@@ -71,12 +91,26 @@ CREATE TABLE `tbl_pegawai` (
   `id` int(11) NOT NULL,
   `nama` varchar(25) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL
+  `password` varchar(30) NOT NULL,
+  `status` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_pegawai`
+--
+
+INSERT INTO `tbl_pegawai` (`id`, `nama`, `email`, `password`, `status`) VALUES
+(2, 'lismini', 'lismini@ivenapp.com', 'lismini', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_barang`
@@ -110,6 +144,12 @@ ALTER TABLE `tbl_pegawai`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_barang`
 --
 ALTER TABLE `tbl_barang`
@@ -131,7 +171,7 @@ ALTER TABLE `tbl_order`
 -- AUTO_INCREMENT for table `tbl_pegawai`
 --
 ALTER TABLE `tbl_pegawai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

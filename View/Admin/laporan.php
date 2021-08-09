@@ -7,8 +7,6 @@ require_once('./View/main/navAdmin.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/app.css">
     <title>IvenApp</title>
@@ -17,19 +15,13 @@ require_once('./View/main/navAdmin.php');
 <center>
     <div class="row col-md-10 col-md-offset-4 custyle">
     <table class="table table-striped custab">
-        <h2>Data User</h2>
-    <thead>
-    <tr>
-        <th>
-    <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add </a>
-        </th>
-    </tr>    
+        <h2>Data Laporan</h2>
+    <thead>    
     <tr>
             <th>No</th>
-            <th>Foto</th>
-            <th>Nama</th>
-            <th>Kategori</th>
-            <th>Jumlah</th>
+            <th>nama resi</th>
+            <th>tanggal</th>
+            <th>drop</th>
             <th class="text-center">Action</th>
         </tr>
     </thead>
@@ -39,16 +31,14 @@ require_once('./View/main/navAdmin.php');
                 <td>Blogs</td>
                 <td>Parent Blogs</td>
                 <td>Input</td>
-                <td>Input</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs" href="#">Del</a></td>
+                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Print</a></td>
             </tr>
             <tr>
                 <td>1</td>
                 <td>Blogs</td>
                 <td>Parent Blogs</td>
                 <td>Input</td>
-                <td>Input</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs" href="#">Del</a></td>
+                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Print</a></td>
             </tr>
             </tbody>
     </table>
@@ -60,5 +50,4 @@ require_once('./View/main/navAdmin.php');
 <script src="./assets/js/jquery-3.5.1.min.js"></script>
 <script src="./assets/js/bootstrap.js"></script>
 <script src="./assets/js/popper.min.js"></script>
-<script src="./assets/js/script.js"></script>
 </html>

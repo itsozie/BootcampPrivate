@@ -7,32 +7,56 @@
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/app.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-    <title>Login</title>
+    <title>IvenApp</title>
 </head>
 <body>
-<div class="container">
-        <div class="row justify-content-center align-items-center" style="height:100vh">
-            <div class="col-4">
-                <div class="card login">
-                    <div class="card-body login">
-                    <h2 style="text-align : center">Silahkan Login</h2>
-                        <form action="" autocomplete="off">
-                            <div class="form-group">
-                                <label for="username">username</label>
-                                <input type="text" class="form-control" name="username">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">passsword</label>
-                                <input type="password" class="form-control" name="password">
-                            </div>
-                            <button type="button" id="sendlogin" class="btn btn-primary">login</button>
-                        </form>
-                    </div>
+<<div class="container login-container">
+<?php 
+	if(isset($_GET['pesan'])){
+		if($_GET['pesan']=="gagal"){
+			echo "<div class='alert alert-danger'>Username dan Password tidak sesuai !</div>";
+		}
+	}
+	?>
+            <div class="row">
+                <div class="col-md-6 login-form-1">
+                    <h3>Login for Admin</h3>
+                    <form method="post" action="index.php?page=auth&aksi=loginAdmin">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Email *" name="email" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Your Password *" name="password" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Login" />
+                        </div>
+                        <div class="form-group">
+                            <a href="#" class="ForgetPwd">Forget Password?</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-6 login-form-2">
+                    <h3>Login for Pegawai</h3>
+                    <form method="post" action="index.php?page=auth&aksi=loginPegawai">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email *" name="email" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Your Password *" name="password" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Login" />
+                        </div>
+                        <div class="form-group">
+
+                            <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
-</body>
     <script src="./assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
     <script src="./assets/js/script.js"></script>

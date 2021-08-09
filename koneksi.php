@@ -9,7 +9,7 @@ function koneksi(){
     try {
         return new mysqli($db_host,$db_user,$db_password,$db_database);
     } catch (Exception $e) {
-        echo "terjadi kesalahan database";
+        require_once("View/main/error.php");
     }
 
 }

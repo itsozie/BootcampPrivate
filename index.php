@@ -1,49 +1,51 @@
 <?php
 require_once("koneksi.php");
+// call the model
 require_once("Model/authModel.php");
+// call the controller
+require_once("Controller/authController.php");
+
+
 
 if (isset($_GET['page']) && isset($_GET['aksi'])) {
     $page = $_GET['page']; //  nama page
     $aksi = $_GET['aksi']; // Aksi  page
 
-
+        // page Auth
     if ($page == "auth") {
+        $auth = new authController;
         if ($aksi == 'view') {
-            require_once("View/auth/login.php");
-        } else if ($aksi == 'loginAslab') {
-            require_once("View/auth/login_aslab.php");
-        } else if ($aksi == 'loginPraktikan') {
-            require_once("View/auth/login_praktikan.php");
-        } else if ($aksi == 'authAslab') {
-            require_once("View/menu/menu_aslab.php");
-            require_once("View/aslab/index.php");
-        } else if ($aksi == 'authPraktikan') {
-            require_once("View/menu/menu_praktikan.php");
-            require_once("View/praktikan/index.php");
+            $auth -> login();
         } else if ($aksi == 'logout') {
-            require_once("View/auth/index.php");
-        } else if ($aksi == 'daftarPraktikan') {
-            require_once("View/auth/daftar_praktikan.php");
-        } else if ($aksi == 'storePraktikan') {
-            require_once("View/auth/index.php");
-        } else {
-            echo "Method Not Found";
+            $auth-> logout();
+        } elseif ($aksi == 'loginAdmin') {
+            $auth -> loginAdmin();
+        } elseif ($aksi == 'loginPegawai') {
+            $auth -> loginPegawai();
+        } 
+        else {
+            echo "EROR 1";
         }
-    } else if ($page == 'Admin') {
-        require_once("View/menu/menu_aslab.php");
+
+
+        // page Admin
+    } else if ($page == 'admin') {
+        require_once("View/Main/navAdmin.php");
         if ($aksi == 'view') {
-            require_once("View/daftarprak/index.php");
-        } else if ($aksi == 'verif') {
-            require_once("View/daftarprak/index.php");
-        } else if ($aksi == 'unVerif') {
-            require_once("View/daftarprak/index.php");
+            require_once("View/admin/index.php");
+        } else if ($aksi =='laporan') {
+            require_once("View/Admin/laporan.php");
+        } else if ($aksi == 'barang') {
+            require_once("View/Admin/barang.php");
+        } else if ($aksi == 'user') {
+            require_once("View/Admin/user.php");
         } else {
-            echo "Method Not Found";
+            echo "EROR 2";
         }
     } else {
-        echo "Page Not Found";
+        echo "EROR";
     }
-    } else if ($page == 'User') {
+    } else if ($page == 'barang') {
         require_once("View/menu/menu_aslab.php");
         if ($aksi == 'view') {
             require_once("View/daftarprak/index.php");
@@ -52,9 +54,9 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         } else if ($aksi == 'unVerif') {
             require_once("View/daftarprak/index.php");
         } else {
-            echo "Method Not Found";
+            echo "EROR 3";
         }
-}  
+    }  
     else{
-    require_once('View/auth/Login.php');
+        header("location: index.php?page=auth&aksi=view");
     }

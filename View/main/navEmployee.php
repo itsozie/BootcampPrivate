@@ -18,8 +18,7 @@
     Selamat datang User
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Profil</a>
-    <a class="dropdown-item" href="#">Logout</a>
+    <a class="dropdown-item" href="index.php?page=auth&aksi=logout">Logout</a>
   </div>
 </div>
   </form>
