@@ -9,15 +9,15 @@
     <title>IvenApp</title>
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navnav">
   <a class="navbar-brand">IvenApp</a>
   <form class="form-inline">
   <div class="dropdown">
-  <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Selamat datang Admin
+  <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Selamat datang <?= $_SESSION['admin']['nama'] ?>
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="index.php?page=auth&aksi=view">Logout</a>
+    <a class="dropdown-item" href="index.php?page=auth&aksi=logout&pesan=keluar">Logout</a>
   </div>
 </div>
   </form>

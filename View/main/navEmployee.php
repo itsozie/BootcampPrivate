@@ -9,13 +9,13 @@
     <title>IvenApp</title>
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navnav">
   <a class="navbar-brand">IvenApp</a>
   <form class="form-inline">
   <input class="form-control mr-sm-2" type="search" placeholder="Cari Barang" aria-label="Search">
   <div class="dropdown">
   <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Selamat datang User
+    Selamat datang <?= $_SESSION['babu']['nama'] ?>
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="index.php?page=auth&aksi=logout">Logout</a>

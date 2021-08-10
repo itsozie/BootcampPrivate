@@ -2,12 +2,23 @@
 require_once("koneksi.php");
 // call the model
 require_once("Model/authModel.php");
+require_once("Model/adminModel.php");
+require_once("Model/pegawaiModel.php");
+require_once("Model/barangModel.php");
+require_once("Model/kategoriModel.php");
+require_once("Model/orderModel.php");
 // call the controller
+require_once("Controller/authController.php");
+require_once("Controller/adminController.php");
+require_once("Controller/pegawaiController.php");
+require_once("Controller/authController.php");
+require_once("Controller/authController.php");
 require_once("Controller/authController.php");
 
 
 
 if (isset($_GET['page']) && isset($_GET['aksi'])) {
+    session_start();
     $page = $_GET['page']; //  nama page
     $aksi = $_GET['aksi']; // Aksi  page
 
@@ -31,20 +42,31 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         // page Admin
     } else if ($page == 'admin') {
         require_once("View/Main/navAdmin.php");
+        $admin = new adminController;
         if ($aksi == 'view') {
-            require_once("View/admin/index.php");
+            $admin -> index();
         } else if ($aksi =='laporan') {
             require_once("View/Admin/laporan.php");
         } else if ($aksi == 'barang') {
             require_once("View/Admin/barang.php");
-        } else if ($aksi == 'user') {
-            require_once("View/Admin/user.php");
-        } else {
+        }else {
             echo "EROR 2";
         }
-    } else {
-        echo "EROR";
+
+        // page Babu
+    } elseif ($page=='babu') {
+        require_once("View/main/navEmployee.php");
+        $babu = new pegawaiController;
+        if ($aksi=='view') {
+            $babu -> index();
+        } elseif ($aksi=='ambil') {
+            require_once("View/User/checkout.php");
+        } else{
+            echo"Kesalahan mengambil data";
+        }
+        
     }
+    // page barang
     } else if ($page == 'barang') {
         require_once("View/menu/menu_aslab.php");
         if ($aksi == 'view') {

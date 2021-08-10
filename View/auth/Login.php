@@ -10,20 +10,24 @@
     <title>IvenApp</title>
 </head>
 <body>
-<<div class="container login-container">
+<div class="container login-container">
 <?php 
 	if(isset($_GET['pesan'])){
 		if($_GET['pesan']=="gagal"){
 			echo "<div class='alert alert-danger'>Username dan Password tidak sesuai !</div>";
-		}
+		}elseif ($_GET['pesan']=="bobol") {
+            echo "<div class='alert alert-danger'>Anda Harus Login !</div>";
+        }elseif ($_GET['pesan']=="keluar") {
+            echo "<div class='alert alert-primary'>Anda telah keluar</div>";
 	}
+}
 	?>
             <div class="row">
                 <div class="col-md-6 login-form-1">
                     <h3>Login for Admin</h3>
                     <form method="post" action="index.php?page=auth&aksi=loginAdmin">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Email *" name="email" value="" />
+                            <input type="email" class="form-control" placeholder="Your Email *" name="email" value="" />
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Your Password *" name="password" value="" />

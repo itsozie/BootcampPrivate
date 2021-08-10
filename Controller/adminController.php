@@ -7,6 +7,10 @@ class adminController{
     }
 
     public function index(){
-        $idAdmin = $_SESSION['aslab'];
+        if ($_SESSION['admin']) {
+            require_once("View/Admin/index.php");
+        }else {
+            header("Location: index.php?page=auth&aksi=view&pesan=bobol");
+        }
     }
 }

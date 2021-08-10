@@ -3,6 +3,9 @@
 body{
     background-color: #eee;
 }
+.navnav{
+    background-color: #0062cc;
+}
 
 /* form login */
 .login-container{

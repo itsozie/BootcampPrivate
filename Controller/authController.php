@@ -30,7 +30,7 @@ class authController{
             $_SESSION['role'] = 'babu';
             $_SESSION['babu'] = $data;
 
-            require_once("View/User/checkout.php");
+            header("Location: index.php?page=babu&aksi=view");
         }else {
             header("Location: index.php?page=auth&aksi=view&pesan=gagal");
         }
@@ -38,6 +38,6 @@ class authController{
 
     public function logout(){
         session_destroy();
-        header("location:index.php?page=auth&aksi=login");
+        header("location:index.php?page=auth&aksi=view&pesan=keluar");
     }
 }
