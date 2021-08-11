@@ -35,7 +35,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             $auth -> loginPegawai();
         } 
         else {
-            echo "EROR 1";
+            require_once("View/main/error.php");
         }
 
 
@@ -49,8 +49,15 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             require_once("View/Admin/laporan.php");
         } else if ($aksi == 'barang') {
             require_once("View/Admin/barang.php");
-        }else {
-            echo "EROR 2";
+        } else if ($aksi == 'user') {
+            $admin -> getUser();
+        }elseif ($aksi=='addUser') {
+            $admin -> addUser();
+        }elseif ($aksi='updateUser') {
+            $admin -> updateUser();
+        }
+        else {
+            require_once("View/main/error.php");
         }
 
         // page Babu
@@ -62,7 +69,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         } elseif ($aksi=='ambil') {
             require_once("View/User/checkout.php");
         } else{
-            echo"Kesalahan mengambil data";
+            require_once("View/main/error.php");
         }
         
     }
@@ -76,7 +83,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         } else if ($aksi == 'unVerif') {
             require_once("View/daftarprak/index.php");
         } else {
-            echo "EROR 3";
+            require_once("View/main/error.php");
         }
     }  
     else{

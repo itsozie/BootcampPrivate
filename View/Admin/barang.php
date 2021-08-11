@@ -14,13 +14,79 @@ require_once('./View/main/navAdmin.php');
 <body>
 	
 <center>
+    <!-- modal add -->
+    <div class="modal fade" id="modaladd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- end add -->
+
+    <!-- modal update -->
+    <div class="modal fade" id="modalupdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- end update -->
+
+    <!-- modal delete -->
+    <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        anda yakin ingin menghapus data ??
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">batal</button>
+        <button type="button" class="btn btn-primary">Oke</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- end delete -->
+
     <div class="row col-md-10 col-md-offset-4 custyle">
         <h2>Data Barang</h2>
     <table class="table table-striped custab">
     <thead>
     <tr>
         <th>
-    <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add </a>
+    <a href="#" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#modaladd"><b>+</b> Add </a>
         </th>
     </tr>    
     <tr>
@@ -33,22 +99,17 @@ require_once('./View/main/navAdmin.php');
         </tr>
     </thead>
     <tbody>
-            <tr>
-                <td>1</td>
-                <td>Blogs</td>
-                <td>Parent Blogs</td>
-                <td>Input</td>
-                <td>Input</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs" href="#">Del</a></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Blogs</td>
-                <td>Parent Blogs</td>
-                <td>Input</td>
-                <td>Input</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs" href="#">Del</a></td>
-            </tr>
+        <?php for ($i=0; $i < 5; $i++) { ?>
+             <tr>
+             <td>1</td>
+             <td>Blogs</td>
+             <td>Parent Blogs</td>
+             <td>Input</td>
+             <td>Input</td>
+             <td class="text-center"><a class='btn btn-info btn-xs' data-toggle="modal" data-target="#modalupdate" href="#">Edit</a>
+              <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modaldelete" href="#">Del</a></td>
+         </tr>
+       <?php } ?>
             </tbody>
     </table>
             <a href="index.php?page=admin&aksi=view" class="btn btn-danger">Back </a>
