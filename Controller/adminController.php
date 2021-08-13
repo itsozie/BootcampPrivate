@@ -14,6 +14,23 @@ class adminController{
         }
     }
 
+    public function barang(){
+        if ($_SESSION['admin']) {
+            require_once("View/Admin/barang.php");
+        }else {
+            header("Location: index.php?page=auth&aksi=view&pesan=bobol");
+        }
+    }
+
+    public function laporan(){
+        if ($_SESSION['admin']) {
+            require_once("View/Admin/laporan.php");
+        }else {
+            header("Location: index.php?page=auth&aksi=view&pesan=bobol");
+        }
+    }
+
+
     public function getUser(){
         $data = $this-> model -> getUser();
         extract($data);
@@ -26,7 +43,7 @@ class adminController{
         $password =$_POST['password'];
         $status =$_POST['status'];
 
-        if ($this -> model -> tambahPegawai($nama,$email,$password,$status)==NULL) {
+        if ($this -> model -> tambahPegawai($nama,$email,$password,$status)) {
             header('Location: index.php?page=admin&aksi=user&pesan=berhasil');
         }else {
             header('Location: index.php?page=admin&aksi=user&pesan=gagal');
@@ -34,18 +51,29 @@ class adminController{
     }
 
     public function updateUser(){
-        $id=$_GET['id'];
-        $nama  = $_POST['nama'];
+        $id = $_POST['id'];
+        $nama = $_POST['nama'];
         $email = $_POST['email'];
-        $pass  = $_POST['password'];
-        $status= $_POST['status'];
-        if ($this -> model -> updatePegawai($nama,$email,$password,$status,$id)) {
+        $password = $_POST['password'];
+        $status = $_POST['status'];
+
+        if ($this -> model -> updatePegawai($id,$nama,$email,$password,$status)) {
             header('Location: index.php?page=admin&aksi=user&pesan=berhasil');
         }else {
             header('Location: index.php?page=admin&aksi=user&pesan=gagal');
         }
     }
 
+
+    public function editUser(){
+        $id = $_GET['id'];
+        $data = $this->model->getId($id);
+        extract($data);
+        require_once("View/Admin/edit.php");
+        }
+
+    
+        
     public function deleteUser(){
         $id = $_GET['id'];
         if ($this -> model -> deletePegawai($id)) {
@@ -55,3 +83,4 @@ class adminController{
         }
     }
 }
+

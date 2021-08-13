@@ -9,7 +9,7 @@
     <title>IvenApp</title>
 </head>
 <body>
-<nav class="navbar navnav">
+<nav class="navbar dark bg-dark">
   <a class="navbar-brand">IvenApp</a>
   <form class="form-inline">
   <input class="form-control mr-sm-2" type="search" placeholder="Cari Barang" aria-label="Search">

@@ -36,18 +36,18 @@ require_once('./View/main/navAdmin.php');
 </div>
     <!-- end add -->
 
-    <!-- modal update -->
-    <div class="modal fade" id="modalupdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- modal kategori -->
+        <div class="modal fade" id="modaladd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update Data</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+      
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -56,39 +56,17 @@ require_once('./View/main/navAdmin.php');
     </div>
   </div>
 </div>
-    <!-- end update -->
-
-    <!-- modal delete -->
-    <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        anda yakin ingin menghapus data ??
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">batal</button>
-        <button type="button" class="btn btn-primary">Oke</button>
-      </div>
-    </div>
-  </div>
-</div>
-    <!-- end delete -->
-
+    <!-- end add -->
+    
     <div class="row col-md-10 col-md-offset-4 custyle">
         <h2>Data Barang</h2>
     <table class="table table-striped custab">
     <thead>
     <tr>
         <th>
-    <a href="#" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#modaladd"><b>+</b> Add </a>
+    <a href="#" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#modaladd"><b>+</b> Add Barang </a>
         </th>
-    </tr>    
+    </tr>      
     <tr>
             <th>No</th>
             <th>Foto</th>
@@ -107,7 +85,7 @@ require_once('./View/main/navAdmin.php');
              <td>Input</td>
              <td>Input</td>
              <td class="text-center"><a class='btn btn-info btn-xs' data-toggle="modal" data-target="#modalupdate" href="#">Edit</a>
-              <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modaldelete" href="#">Del</a></td>
+              <a href="#" class="btn btn-danger btn-xs" href="#">Del</a></td>
          </tr>
        <?php } ?>
             </tbody>

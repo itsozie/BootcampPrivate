@@ -46,18 +46,21 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         if ($aksi == 'view') {
             $admin -> index();
         } else if ($aksi =='laporan') {
-            require_once("View/Admin/laporan.php");
+            $admin -> laporan();
         } else if ($aksi == 'barang') {
-            require_once("View/Admin/barang.php");
+            $admin -> barang();
         } else if ($aksi == 'user') {
             $admin -> getUser();
         }elseif ($aksi=='addUser') {
             $admin -> addUser();
-        }elseif ($aksi='updateUser') {
+        }elseif ($aksi=='edit') {
+            $admin -> editUser();
+        }elseif ($aksi=='update') {
             $admin -> updateUser();
-        }
-        else {
-            require_once("View/main/error.php");
+        }elseif ($aksi=='hapus') {
+            $admin -> deleteUser();
+        }else {
+            echo "EROR";
         }
 
         // page Babu

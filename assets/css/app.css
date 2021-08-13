@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
 body{
-    background-color: #eee;
+    background-color: rgb(228, 228, 228);
 }
-.navnav{
-    background-color: #0062cc;
+.container{
+    margin-top: 10px;
 }
-
 /* form login */
 .login-container{
     margin-top: 5%;

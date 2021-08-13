@@ -7,6 +7,7 @@ class authController{
     public function login(){
         require_once("View/auth/Login.php");
     }
+    
     public function loginAdmin(){
         $email = $_POST['email'];
         $password = $_POST['password'];

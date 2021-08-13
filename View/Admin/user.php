@@ -52,71 +52,12 @@ require_once('./View/main/navAdmin.php');
 </div>
     <!-- end add -->
 
-    <!-- modal update -->
-    <div class="modal fade" id="modalupdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update Data</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form action="index.php?page=admin&aksi=updateUser" method="POST">
-  <div class="form-group">
-  <input type="teks" name="id" value="<?= $data['id'] ?>">
-    <label for="nama">Nama</label>
-    <input type="teks" name="nama" class="form-control" id="nama" required placeholder="Masukkan Nama">
-    <label for="email">Email address</label>
-    <input type="email" name="email"  class="form-control" id="email" required placeholder="name@example.com">
-    <label for="password">Password</label>
-    <input type="password" name="password"  class="form-control" id="password" required placeholder="Masukkan Password">
-    <label for="status">Pilih status</label>
-    <select class="form-control" required name="status" id="status">
-      <option>Pembantu</option>
-      <option>Umum</option>
-      <option>Cleaning</option>
-    </select>
-  </div>
-  <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-      </div>
-</form>
-      </div>
-    </div>
-  </div>
-</div>
-    <!-- end update -->
-
-    <!-- modal delete -->
-    <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        anda yakin ingin menghapus data ??
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">batal</button>
-        <button type="button" class="btn btn-primary">Simpan</button>
-      </div>
-    </div>
-  </div>
-</div>
-    <!-- end delete -->
     <?php 
 	if(isset($_GET['pesan'])){
 		if($_GET['pesan']=="gagal"){
-			echo "<div class='alert alert-danger'>Data gagal ditambah</div>";
+			echo "<div class='alert alert-success'>Perintah Sukses</div>";
 		}else{
-            echo "<div class='alert alert-success'>Data Berhasil Ditambah</div>";
+            echo "<div class='alert alert-danger'>Perintah Gagal</div>";
         }
 }
 	?>
@@ -156,8 +97,8 @@ require_once('./View/main/navAdmin.php');
                   <?php }
              ?>
              <td class="text-center">
-               <a class='btn btn-info btn-xs' data-toggle="modal" data-target="#modalupdate">Edit</a>
-               <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modaldelete">Del</a>
+               <a href="index.php?page=admin&aksi=edit&id=<?=$row['id']?>" class='btn btn-info btn-xs'>Edit</a>
+               <a href="index.php?page=admin&aksi=hapus&id=<?=$row['id']?>"class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus ini ?')">Del</a>
             </td>
          </tr>
         <?php $no++;
