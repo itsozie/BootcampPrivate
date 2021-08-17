@@ -30,6 +30,7 @@ class adminController{
     }
 
     public function addUser(){
+        if ($_SESSION['admin']) {
         $nama =$_POST['nama'];
         $email =$_POST['email'];
         $password =$_POST['password'];
@@ -40,38 +41,53 @@ class adminController{
         }else {
             header('Location: index.php?page=admin&aksi=user&pesan=gagal');
         }
+        }else {
+            header("Location: index.php?page=auth&aksi=view&pesan=bobol");
+        }
     }
 
     public function updateUser(){
-        $id = $_POST['id'];
-        $nama = $_POST['nama'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $status = $_POST['status'];
-
-        if ($this -> model -> updatePegawai($id,$nama,$email,$password,$status)) {
-            header('Location: index.php?page=admin&aksi=user&pesan=berhasil');
+        if ($_SESSION['admin']) {
+            $id = $_POST['id'];
+            $nama = $_POST['nama'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $status = $_POST['status'];
+    
+            if ($this -> model -> updatePegawai($id,$nama,$email,$password,$status)) {
+                header('Location: index.php?page=admin&aksi=user&pesan=berhasil');
+            }else {
+                header('Location: index.php?page=admin&aksi=user&pesan=gagal');
+            }
         }else {
-            header('Location: index.php?page=admin&aksi=user&pesan=gagal');
+            header("Location: index.php?page=auth&aksi=view&pesan=bobol");
         }
     }
 
 
     public function editUser(){
-        $id = $_GET['id'];
-        $data = $this->model->getId($id);
-        extract($data);
-        require_once("View/Admin/edit.php");
-        }
+        if ($_SESSION['admin']) {
+            $id = $_GET['id'];
+            $data = $this->model->getId($id);
+            extract($data);
+            require_once("View/Admin/edit.php");   
+        }else {
+            header("Location: index.php?page=auth&aksi=view&pesan=bobol");
+        }   
+    }
 
     
         
     public function deleteUser(){
-        $id = $_GET['id'];
+        if ($_SESSION['admin']) {
+            $id = $_GET['id'];
         if ($this -> model -> deletePegawai($id)) {
             header('Location: index.php?page=admin&aksi=user&pesan=berhasil');
         }else {
             header('Location: index.php?page=admin&aksi=user&pesan=gagal');
+        }
+        }else {
+            header("Location: index.php?page=auth&aksi=view&pesan=bobol");
         }
     }
 }

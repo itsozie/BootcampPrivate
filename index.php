@@ -58,7 +58,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         }elseif ($aksi=='hapus') {
             $admin -> deleteUser();
         }else {
-            echo "EROR";
+            require_once("View/main/error.php");
         }
 
         // page Babu

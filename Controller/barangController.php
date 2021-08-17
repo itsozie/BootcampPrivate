@@ -1,5 +1,5 @@
 <?php
-class baranfController{
+class barangController{
 
     private $model;
     public function __construct(){
