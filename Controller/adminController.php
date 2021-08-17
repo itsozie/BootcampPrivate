@@ -14,12 +14,10 @@ class adminController{
         }
     }
 
-    public function barang(){
-        if ($_SESSION['admin']) {
-            require_once("View/Admin/barang.php");
-        }else {
-            header("Location: index.php?page=auth&aksi=view&pesan=bobol");
-        }
+    public function getBarang(){
+        $data = $this-> model -> getBarang();
+        extract($data);
+        require_once("View/Admin/barang.php");
     }
 
     public function laporan(){

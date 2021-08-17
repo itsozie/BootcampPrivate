@@ -11,9 +11,9 @@ require_once("Model/orderModel.php");
 require_once("Controller/authController.php");
 require_once("Controller/adminController.php");
 require_once("Controller/pegawaiController.php");
-require_once("Controller/authController.php");
-require_once("Controller/authController.php");
-require_once("Controller/authController.php");
+require_once("Controller/barangController.php");
+require_once("Controller/kategoriController.php");
+require_once("Controller/orderController.php");
 
 
 
@@ -48,7 +48,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
         } else if ($aksi =='laporan') {
             $admin -> laporan();
         } else if ($aksi == 'barang') {
-            $admin -> barang();
+            $admin -> getBarang();
         } else if ($aksi == 'user') {
             $admin -> getUser();
         }elseif ($aksi=='addUser') {
@@ -78,9 +78,10 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
     }
     // page barang
     } else if ($page == 'barang') {
-        require_once("View/menu/menu_aslab.php");
-        if ($aksi == 'view') {
-            require_once("View/daftarprak/index.php");
+        require_once("View/Main/navAdmin.php");
+        $barang = new barangController;
+        if ($aksi == 'getBarang') {
+            $barang = getBarang();
         } else if ($aksi == 'verif') {
             require_once("View/daftarprak/index.php");
         } else if ($aksi == 'unVerif') {

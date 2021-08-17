@@ -14,8 +14,8 @@ require_once('./View/main/navAdmin.php');
 <body>
 	
 <center>
-    <!-- modal add -->
-    <div class="modal fade" id="modaladd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- modal add -->
+<div class="modal fade" id="modaladd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -25,11 +25,26 @@ require_once('./View/main/navAdmin.php');
         </button>
       </div>
       <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
+      <form action="index.php?page=admin&aksi=addUser" method="POST">
+  <div class="form-group">
+    <label for="nama">Nama</label>
+    <input type="teks" name="nama" class="form-control" id="nama" required placeholder="Masukkan Nama">
+    <label for="email">Email address</label>
+    <input type="email" name="email"  class="form-control" id="email" required placeholder="name@example.com">
+    <label for="password">Password</label>
+    <input type="password" name="password"  class="form-control" id="password" required placeholder="Masukkan Password">
+    <label for="status">Pilih status</label>
+    <select class="form-control" required name="status" id="status">
+      <option>Pembantu</option>
+      <option>Umum</option>
+      <option>Cleaning</option>
+    </select>
+  </div>
+  <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+</form>
       </div>
     </div>
   </div>
@@ -77,17 +92,22 @@ require_once('./View/main/navAdmin.php');
         </tr>
     </thead>
     <tbody>
-        <?php for ($i=0; $i < 5; $i++) { ?>
+      
+      <?php $i=1;
+      foreach($data as $row) : ?>
              <tr>
-             <td>1</td>
-             <td>Blogs</td>
-             <td>Parent Blogs</td>
-             <td>Input</td>
-             <td>Input</td>
+             <td><?= $i ?></td>
+             <td><?= $row['foto'] ?></td>
+             <td><?= $row['nama'] ?></td>
+             <td><?= $row['nama_kategori'] ?></td>
+             <td><?= $row['jumlah'] ?></td>
              <td class="text-center"><a class='btn btn-info btn-xs' data-toggle="modal" data-target="#modalupdate" href="#">Edit</a>
               <a href="#" class="btn btn-danger btn-xs" href="#">Del</a></td>
          </tr>
-       <?php } ?>
+         <?php $i++;
+        endforeach;
+         ?>
+
             </tbody>
     </table>
             <a href="index.php?page=admin&aksi=view" class="btn btn-danger">Back </a>
