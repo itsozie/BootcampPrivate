@@ -32,7 +32,7 @@ require_once('./View/main/navAdmin.php');
 							<span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
 						</div>
                         
-						 <a href="index.php?page=admin&aksi=barang" class="btn btn-outline-success my-2 my-sm-0" type="submit">Go !!!!</a>
+						 <a href="index.php?page=barang&aksi=view" class="btn btn-outline-success my-2 my-sm-0" type="submit">Go !!!!</a>
                         
 					 </div>
 				</div>	 

@@ -14,12 +14,6 @@ class adminController{
         }
     }
 
-    public function getBarang(){
-        $data = $this-> model -> getBarang();
-        extract($data);
-        require_once("View/Admin/barang.php");
-    }
-
     public function laporan(){
         if ($_SESSION['admin']) {
             require_once("View/Admin/laporan.php");

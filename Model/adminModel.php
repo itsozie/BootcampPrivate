@@ -13,23 +13,7 @@
          }
          return $hasil;
      }
-
-    // barang get barang
-    public function getBarang(){
-        $sql = "
-        select barang.nama, barang.nama, barang.foto, barang.jumlah, barang.status, kategori.nama_kategori
-        from tbl_barang barang 
-        left join tbl_kategori kategori on kategori.id = barang.id_kategori;
-        ";
-        $query = koneksi() -> query($sql);
-        $hasil = [] ;
-        
-        while ($data = $query -> fetch_assoc()) {
-            $hasil [] =$data;
-        }
-        return $hasil;
-    }
-
+     
     //  input pegawai
     public function tambahPegawai($nama,$email,$password,$status){
         if ($status=='Pembantu') {
@@ -82,4 +66,4 @@
 }
 
 // $tes = new adminModel;
-// var_export($tes->getBarang());die;
+// var_export($tes->updatePegawai('13','ramdhani','kiki@ivenapp.com','123','2'));die;

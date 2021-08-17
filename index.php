@@ -47,8 +47,6 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             $admin -> index();
         } else if ($aksi =='laporan') {
             $admin -> laporan();
-        } else if ($aksi == 'barang') {
-            $admin -> getBarang();
         } else if ($aksi == 'user') {
             $admin -> getUser();
         }elseif ($aksi=='addUser') {
@@ -73,15 +71,15 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             require_once("View/User/checkout.php");
         } else{
             require_once("View/main/error.php");
-        }
-        
+        } 
     }
+
     // page barang
     } else if ($page == 'barang') {
         require_once("View/Main/navAdmin.php");
         $barang = new barangController;
-        if ($aksi == 'getBarang') {
-            $barang = getBarang();
+        if ($aksi == 'view') {
+            $barang = index();
         } else if ($aksi == 'verif') {
             require_once("View/daftarprak/index.php");
         } else if ($aksi == 'unVerif') {
