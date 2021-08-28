@@ -57,6 +57,8 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             $admin -> updateUser();
         }elseif ($aksi=='hapus') {
             $admin -> deleteUser();
+        }elseif ($aksi=='barang') {
+            $admin -> getBarang();
         }else {
             require_once("View/main/error.php");
         }
@@ -73,20 +75,6 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             require_once("View/main/error.php");
         } 
     }
-
-    // page barang
-    } else if ($page == 'barang') {
-        require_once("View/Main/navAdmin.php");
-        $barang = new barangController;
-        if ($aksi == 'view') {
-            $barang = index();
-        } else if ($aksi == 'verif') {
-            require_once("View/daftarprak/index.php");
-        } else if ($aksi == 'unVerif') {
-            require_once("View/daftarprak/index.php");
-        } else {
-            require_once("View/main/error.php");
-        }
     }  
     else{
         header("location: index.php?page=auth&aksi=view");

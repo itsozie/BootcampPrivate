@@ -6,6 +6,7 @@ class adminController{
         $this -> model = new adminModel();
     }
 
+    // INDEX HALAMAN MENU ADMIN
     public function index(){
         if ($_SESSION['admin']) {
             require_once("View/Admin/index.php");
@@ -22,7 +23,7 @@ class adminController{
         }
     }
 
-
+    // HALAMAN USER
     public function getUser(){
         $data = $this-> model -> getUser();
         extract($data);
@@ -90,5 +91,15 @@ class adminController{
             header("Location: index.php?page=auth&aksi=view&pesan=bobol");
         }
     }
+    // END USER
+
+    //  HALAMAN BARANG
+
+    public function getBarang(){
+        $data = $this-> model -> getBarang();
+        extract($data);
+        require_once("View/Admin/barang.php"); 
+}
+    // END BARANG
 }
 
