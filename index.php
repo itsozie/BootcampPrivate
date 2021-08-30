@@ -4,7 +4,6 @@ require_once("koneksi.php");
 require_once("Model/authModel.php");
 require_once("Model/adminModel.php");
 require_once("Model/pegawaiModel.php");
-require_once("Model/barangModel.php");
 require_once("Model/kategoriModel.php");
 require_once("Model/orderModel.php");
 // call the controller
@@ -59,6 +58,12 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             $admin -> deleteUser();
         }elseif ($aksi=='barang') {
             $admin -> getBarang();
+        }elseif ($aksi=='addbarang') {
+            $admin -> addbarang();
+        }elseif ($aksi=='Aktifkan') {
+            $admin -> Aktifkan();
+        }elseif ($aksi=='nonAktifkan') {
+            $admin -> nonAktifkan();
         }else {
             require_once("View/main/error.php");
         }

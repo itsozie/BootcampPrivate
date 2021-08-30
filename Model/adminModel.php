@@ -69,7 +69,7 @@
         // get barang
     public function getBarang(){
         $sql = "
-        select barang.nama, barang.nama, barang.foto, barang.jumlah, barang.status, kategori.nama_kategori
+        select barang.id, barang.nama, barang.foto, barang.jumlah, barang.status, kategori.nama_kategori
         from tbl_barang barang 
         left join tbl_kategori kategori on kategori.id = barang.id_kategori;
         ";
@@ -81,32 +81,37 @@
         }
         return $hasil;
     }
-        // tambah barang
-    public function tambah($post){
-    global $conn;
-    $nama=htmlspecialchars($post["nama"]);
-    $jumlah=htmlspecialchars($post["jumlah"]);
 
+    // get kategori
+    public function getKategori(){
+        $sql = "select * from tbl_kategori";
+        $query = koneksi()->query($sql);
+        $hasil = [] ;
+        
+        while ($data = $query -> fetch_assoc()) {
+            $hasil [] =$data;
+        }
+        return $hasil;
+    }
+
+        // tambah barang
+    public function addBarang($idkategori,$nama,$foto,$jumlah,$status){
     // upload gambar dulu
-        $foto = upload();
+        $foto = $this -> upload();
         if (!$foto) {
             return false;
         }
 
-        $query= "INSERT INTO barang
-        VALUES ('$nama', '', '$foto', '$jumlah')";
-
-        mysqli_query($conn, $query);
-
-        return mysqli_affected_rows($conn);
-
+        $sql= "INSERT INtO tbl_barang
+        VALUES ('$idkategori','$nama, '$foto', '$jumlah','$status')";
+        $query = koneksi() -> query($sql);
         }
 
-        function upload(){
-        $namaFile   = $_FILES['foto']['name'];
-        $ukuranFile = $_FILES['foto']['size'];
-        $error      = $_FILES['foto']['error'];
-        $tmpName    = $_FILES['foto']['tmp_name'];   
+        private function upload(){
+        @$namaFile   = $_FILES['foto']['name'];
+        @$ukuranFile = $_FILES['foto']['size'];
+        @$error      = $_FILES['foto']['error'];
+        @$tmpName    = $_FILES['foto']['tmp_name'];   
         
         if ($error===4) {
             echo "
@@ -143,18 +148,27 @@
 
         // pindah file
         // generate
-        $newFileBaru = uniqid();
+        $newFileBaru =uniqid();
         $newFileBaru .= '.';
-        $newFileBaru .= $extGmbr;
-
-
-
+        $newFileBaru .= $ext- Gmbr;
         move_uploaded_file($tmpName,'../asset/img/'. $newFileBaru);
         return $newFileBaru;
         }
 
+        public function Aktifkan($id){
+            $sql ="
+            update tbl_barang set status = '1' where id='$id'
+            ";
+            $query = koneksi() -> query($sql);
+        }
+        public function nonAktifkan($id){
+            $sql ="
+            update tbl_barang set status = '0' where id='$id'
+            ";
+            $query = koneksi() -> query($sql);
+        }
 
 }
 
 // $tes = new adminModel;
-// var_export($tes->updatePegawai('13','ramdhani','kiki@ivenapp.com','123','2'));die;
+// var_export($tes->addBarang('1','ramdhani','eefef.JPEG','123','0'));die;

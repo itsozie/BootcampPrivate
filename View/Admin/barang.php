@@ -25,48 +25,29 @@ require_once('./View/main/navAdmin.php');
         </button>
       </div>
       <div class="modal-body">
-      <form action="index.php?page=admin&aksi=addUser" method="POST">
+      <form action="index.php?page=admin&aksi=addbarang" method="POST">
   <div class="form-group">
     <label for="nama">Nama</label>
     <input type="teks" name="nama" class="form-control" id="nama" required placeholder="Masukkan Nama">
-    <label for="email">Email address</label>
-    <input type="email" name="email"  class="form-control" id="email" required placeholder="name@example.com">
-    <label for="password">Password</label>
-    <input type="password" name="password"  class="form-control" id="password" required placeholder="Masukkan Password">
-    <label for="status">Pilih status</label>
-    <select class="form-control" required name="status" id="status">
-      <option>Pembantu</option>
-      <option>Umum</option>
-      <option>Cleaning</option>
+    <label for="email">Pilih Kategori</label>
+    <select class="form-control" id="nama_kategori">
+    <?php  
+    foreach($kategori as $row): ?>
+      <option><?=$row["nama_kategori"]?></option>
+      <?php
+    endforeach;
+    ?>
     </select>
+    <label for="jumlah">Jumlah</label>
+    <input type="number" name="jumlah"  class="form-control" id="password" required placeholder="Masukkan jumlah">
+    <label for="status">Pilih Foto</label>
+    <input type="file" class="form-control-file" id="foto" name="foto">
   </div>
   <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
 </form>
-      </div>
-    </div>
-  </div>
-</div>
-    <!-- end add -->
-
-        <!-- modal kategori -->
-        <div class="modal fade" id="modaladd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -88,6 +69,8 @@ require_once('./View/main/navAdmin.php');
             <th>Nama</th>
             <th>Kategori</th>
             <th>Jumlah</th>
+            <th>Status</th>
+            <th>Ready Barang</th>
             <th class="text-center">Action</th>
         </tr>
     </thead>
@@ -101,6 +84,15 @@ require_once('./View/main/navAdmin.php');
              <td><?= $row['nama'] ?></td>
              <td><?= $row['nama_kategori'] ?></td>
              <td><?= $row['jumlah'] ?></td>
+             <td><?= $row['status']== 0 ? '<span class="badge badge-danger">Tidak Aktif</span>' : 
+                                    '<span class="badge badge-success">Aktif</span></td>' ?>
+                                <td>
+                                    <?php if ($row['status'] == 0) : ?>
+                                    <a href="index.php?page=admin&aksi=Aktifkan&id=<?= $row['id'];?>" class="btn btn-success">Aktifkan</a>
+                                    <?php elseif ($row['status'] == 1) : ?>
+                                    <a href="index.php?page=admin&aksi=nonAktifkan&id=<?= $row['id'];?>" class="btn btn-danger">Non-Aktifkan</a>
+                                    <?php endif; ?>
+                                </td>
              <td class="text-center"><a class='btn btn-info btn-xs' data-toggle="modal" data-target="#modalupdate" href="#">Edit</a>
               <a href="#" class="btn btn-danger btn-xs" href="#">Del</a></td>
          </tr>

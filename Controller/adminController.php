@@ -97,9 +97,54 @@ class adminController{
 
     public function getBarang(){
         $data = $this-> model -> getBarang();
+        $kategori = $this -> model -> getKategori();
         extract($data);
+        extract($kategori);
         require_once("View/Admin/barang.php"); 
-}
+    }
+
+    public function addbarang(){
+        if ($_SESSION['admin']) {
+            $id =$_POST['id'];
+            $nama =$_POST['nama'];
+            $foto =$_POST['foto'];
+            $jumlah =$_POST['jumlah'];
+            $status =$_POST['status'];
+
+            if ($this -> model -> addBarang($id,$nama,$foto,$jumlah,$status)) {
+                header('Location: index.php?page=admin&aksi=barang&pesan=berhasil');
+            }else {
+                header('Location: index.php?page=admin&aksi=barang&pesan=gagal');
+            }
+            }else {
+                header("Location: index.php?page=auth&aksi=view&pesan=bobol");
+            }
+        }
+
+        public function Aktifkan(){
+            if ($_SESSION['admin']) {
+                $id = $_GET['id'];
+            if ($this -> model -> Aktifkan($id)) {
+                header('Location: index.php?page=admin&aksi=barang&pesan=berhasil');
+            }else {
+                header('Location: index.php?page=admin&aksi=barang&pesan=gagal');
+            }
+            }else {
+                header("Location: index.php?page=auth&aksi=view&pesan=bobol");
+            }
+        }
+        public function nonAktifkan(){
+            if ($_SESSION['admin']) {
+                $id = $_GET['id'];
+            if ($this -> model -> nonAktifkan($id)) {
+                header('Location: index.php?page=admin&aksi=barang&pesan=berhasil');
+            }else {
+                header('Location: index.php?page=admin&aksi=barang&pesan=gagal');
+            }
+            }else {
+                header("Location: index.php?page=auth&aksi=view&pesan=bobol");
+            }
+        }
     // END BARANG
 }
 

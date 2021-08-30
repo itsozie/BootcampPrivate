@@ -96,6 +96,7 @@ require_once('./View/main/navAdmin.php');
                     <span class="badge badge-warning">Cleaning</span>
                   <?php }
              ?>
+             </td>
              <td class="text-center">
                <a href="index.php?page=admin&aksi=edit&id=<?=$row['id']?>" class='btn btn-info btn-xs'>Edit</a>
                <a href="index.php?page=admin&aksi=hapus&id=<?=$row['id']?>"class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus ini ?')">Del</a>
