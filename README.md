@@ -1,3 +1,3 @@
-# BootCampMinoritas
-#dosen pengampu
-#Eric budhilaw.M.Kes
+# Bootcamp / Les Private
+# Pengajar
+Ericsson Budhilaw
